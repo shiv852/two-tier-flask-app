@@ -23,19 +23,6 @@ pipeline{
             }
             
         }
-        stage("Test"){
-            steps{
-                echo "Developer / Tester tests likh ke dega..."
-            }
-            
-        }
-        stage("Push to Docker Hub"){
-            steps{
-                script{
-                    docker_push("dockerHubCreds","two-tier-flask-app")
-                }  
-            }
-        }
         stage("Deploy"){
             steps{
                 sh "docker compose up -d --build flask-app"
